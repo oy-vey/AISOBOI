@@ -1,0 +1,3 @@
+def collatz(x):
+    r = []
+    
