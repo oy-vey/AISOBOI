@@ -1,0 +1,26 @@
+cd ~
+dd if=/dev/zero of=drive-image bs=1024 count=524288 # drive-image apparent-size=512M actual-size=512M
+mke2fs -t ext2 -q drive-image # drive-image apparent-size=512M actual-size=512M
+mkdir matryoshka
+# Добавил /bin/mount в /etc/sudoers
+sudo mount -o loop=/dev/loop0 drive-image matryoshka
+# 	$ cat /proc/mounts
+#/dev/loop0 /home/oracle/matryoshka ext2 rw (!) появилась новая строчка
+
+# Добавил /bin/chown в /etc/sudoers
+sudo chown -R oracle matryoshka
+cd matryoshka
+mkdir aaa bbb ccc
+
+# Sparse-file
+cd ~
+dd of=drive-image-sparse bs=1 seek=512M count=0 # drive-image-sparse apparent-size=512M, actual-size=0M
+mke2fs -t ext2 -q drive-image-sparse # drive-image-sparse apparent-size=512M, actual-size=8.4M Форматирование увеличило реальный размер файла
+mkdir matryoshka-sparse
+sudo mount -o loop=/dev/loop1 drive-image-sparse matryoshka-sparse
+# 	$ cat /proc/mounts
+#/dev/loop1 /home/oracle/matryoshka-sparse ext2 rw (!) появилась новая строчка
+sudo chown -R oracle matryoshka-sparse
+cd matryoshka-sparse
+mkdir aaa bbb ccc
+dd if=/dev/zero of=/home/oracle/matryoshka-sparse/aaa/two_megabytes bs=1024 count=2048 # drive-image-sparse apparent-size=512M, actual-size=10.4M Файл two_megabytes добавил 2 МБ в drive-image-sparse

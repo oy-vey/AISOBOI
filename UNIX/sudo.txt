@@ -1,0 +1,2 @@
+oracle  qbymsqvdc001=/bin/mount
+oracle  qbymsqvdc001=/bin/chown
