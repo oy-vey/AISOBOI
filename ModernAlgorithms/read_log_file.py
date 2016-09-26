@@ -14,7 +14,15 @@ def read_log_file (path):
     results = dict()
     for line in open(path):
         if 'n = ' in line:
-            print(line.split("="))
+            n = int(line.split("=")[1])
+        elif 'time' in line:
+            method = line.split(":")[0][4:]
+            value = int(line.split(":")[1])
+            results[method] = results.get(method, list())
+            pair = (n, value)
+            results[method].append(pair)
+    return results
 
-read_log_file("C:\\Users\\Daniil_Skokleenko\\Desktop\\1000-1100.log")
+results = read_log_file("C:\\Users\\Danon\\Desktop\\1000-1100.log")
+
 
