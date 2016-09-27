@@ -17,12 +17,14 @@ def read_log_file (path):
             n = int(line.split("=")[1])
         elif 'time' in line:
             method = line.split(":")[0][4:]
-            value = int(line.split(":")[1])
+            value = float(line.split(":")[1])
             results[method] = results.get(method, list())
             pair = (n, value)
             results[method].append(pair)
     return results
 
-results = read_log_file("C:\\Users\\Danon\\Desktop\\1000-1100.log")
+results2000 = read_log_file("C:\\Users\\Danon\\PycharmProjects\\AISOBOI\\ModernAlgorithms\\1000-2000.log")
+results1100 = read_log_file("C:\\Users\\Danon\\PycharmProjects\\AISOBOI\\ModernAlgorithms\\1000-1100.log")
+
 
 
