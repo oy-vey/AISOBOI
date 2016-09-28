@@ -1,8 +1,6 @@
 def cut(x , a, b):
-    """Updates list x to meet a >= x[i] >= b"""
-    for i, v in enumerate(x):
-        x[i] = min(max(v, a), b)
-    return x
+    """Updates list x to meet a =< x[i] =< b"""
+    return [min(max(v, a), b) for v in x]
 
 
 x = [-1, 1, 2, 3, 4]

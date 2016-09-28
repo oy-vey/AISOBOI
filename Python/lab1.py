@@ -1,4 +1,4 @@
-def cumsum(x: list):
+def cumsum(x):
     """Returns cumulative sums of a list"""
     s = [0]
     for i, v in enumerate(x):
@@ -7,6 +7,6 @@ def cumsum(x: list):
     return s
 
 
-x = [1, 2, 3, 4]
+x = [1, 2, 3]
 
 print(cumsum(x))
