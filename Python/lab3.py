@@ -5,5 +5,5 @@ def collatz(x):
         r.append(str(x))
     return '->'.join(r)
 
-x = int(input('Please, enter number: '))
-print(collatz(x))
+number = int(input('Please, enter number: '))
+print(collatz(number))

@@ -7,6 +7,6 @@ def cumsum(x):
     return s
 
 
-x = [1, 2, 3]
+ml = [1, 2, 3]
 
-print(cumsum(x))
+print(cumsum(ml))

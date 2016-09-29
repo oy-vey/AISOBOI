@@ -1,10 +1,10 @@
-def cut(x , a, b):
+def cut(x, a, b):
     """Updates list x to meet a =< x[i] =< b"""
     return [min(max(v, a), b) for v in x]
 
 
-x = [-1, 1, 2, 3, 4]
-a = 0
-b = 3
+ml = [-1, 1, 2, 3, 4]
+lb = 0
+ub = 2
 
-print(cut(x, a, b))
+print(cut(ml, lb, ub))
