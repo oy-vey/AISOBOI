@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="284de6f7-59db-4098-b179-1b1ab377d4a5" name="Default" comment="File path removed">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/AISOBOI.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+    <list default="true" id="284de6f7-59db-4098-b179-1b1ab377d4a5" name="Default" comment="idea files removed">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="AISOBOI.iws" />
@@ -605,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1475504594791</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="idea files removed">
+      <created>1475505032132</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1475505032132</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -683,7 +686,8 @@
     <MESSAGE value="File path removed" />
     <MESSAGE value="lab6 completed" />
     <MESSAGE value="lab5 adjusted" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab5 adjusted" />
+    <MESSAGE value="idea files removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="idea files removed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
