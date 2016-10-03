@@ -1,8 +1,5 @@
 def plural(subject, amount):
-    if amount == 1:
-        return subject
-    else:
-        return subject + 's'
+    return subject if amount == 1 else subject + 's'
 
 
 def hanging_bottles(amount):
@@ -12,10 +9,7 @@ def hanging_bottles(amount):
 
 
 def what_if(bottles_left):
-    if bottles_left != 0:
-        one, two = ("And i", '')
-    else:
-        one, two = ('I', ' that')
+    one, two = ("And i", '') if bottles_left != 0 else ('I', ' that')
     return "%sf%s one green bottle should accidentally fall," % (one, two)
 
 
