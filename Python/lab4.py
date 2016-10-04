@@ -2,8 +2,8 @@ import re
 
 
 def reverse(text):
-    underscores = [u for u in re.split('[^_]+', text) if u != '']
-    words = [w for w in re.split('[_]+', text) if w != '']
+    underscores = [u for u in re.split('[^_]', text) if u != '']
+    words = [w for w in re.split('[_]', text) if w != '']
     words.reverse()
     if len(underscores) > len(words):
         start, end = len(words), -1
