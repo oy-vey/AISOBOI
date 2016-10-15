@@ -1,0 +1,28 @@
+n = 1023
+timeSimple: 7.084
+timeBlock: 6.609
+timeSwapped: 4.058
+n = 1024
+timeSimple: 14.111
+timeBlock: 7.994
+timeSwapped: 4.133
+n = 1025
+timeSimple: 8.428
+timeBlock: 6.721
+timeSwapped: 4.196
+n = 1040
+timeSimple: 7.023
+timeBlock: 6.587
+timeSwapped: 4.275
+n = 1041
+timeSimple: 10.46
+timeBlock: 6.893
+timeSwapped: 4.413
+n = 1050
+timeSimple: 10.53
+timeBlock: 7.085
+timeSwapped: 4.427
+n = 1100
+timeSimple: 11.507
+timeBlock: 7.894
+timeSwapped: 4.948
