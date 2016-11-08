@@ -1,7 +1,7 @@
 #!/bin/bash
 
 show_usage () {                        
-  echo "usage: $(basename "$0") [-h|--help] <USERID>"
+  echo "usage: $(basename "$0") [-h|--help] <USERID>";
 }
 
 show_help () {
@@ -18,14 +18,14 @@ Exit status:
 }
 
 if [ "$#" == "0" ]; then
-  show_usage
-  exit
+  show_usage;
+  exit;
 fi
 
 # Do it simple
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then 
-  show_help
-  exit
+  show_help;
+  exit;
 fi
 
 
