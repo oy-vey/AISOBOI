@@ -22,7 +22,6 @@ if [ "$#" == "0" ]; then
   exit;
 fi
 
-# Do it simple
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then 
   show_help;
   exit;
