@@ -34,7 +34,7 @@ RESPONSE=$(wget -qO - "https://api.vk.com/method/users.get?user_ids=$user_id&fie
 is_invalid=$(echo "${RESPONSE}" | grep -Po '(?<="error_code":)[0-9]+');
 error_msg=$(echo "${RESPONSE}" | grep -oP '"error_msg":"\K[^"]+');
 if [ -n "${is_invalid}" ]; then
-	(echo >&2 "Error: " "${error_msg}"; exit 1;)
+	(echo -e "Error: " "${error_msg}"; exit 1;)
 fi;
 is_hidden=$(echo "${RESPONSE}" | grep -Po '(?<="hidden":)[0-9]+');
 is_online=$(echo "${RESPONSE}" | grep -Po '(?<="online":)[0-9]+');

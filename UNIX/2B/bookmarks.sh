@@ -18,6 +18,16 @@ Exit status:
 '
 }
 
+s {
+    _bookmark_name_valid "$@"
+    if [ -z "$exit_message" ]; thenDI
+        CURDIR=$(echo $PWD| sed "s#^$HOME#\$HOME#g")
+        echo "export DIR_$1=\"$CURDIR\"" >> $BKMRKS
+    fi
+}
+
+
+
 if [ "$#" == "0" ]; then
   show_usage;
   exit;
@@ -27,3 +37,11 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
   show_help;
   exit;
 fi
+
+
+# setup hidden file to store bookmarks
+if [ ! -n "$BKMRKS" ]; then
+    BKMRKS=~/.bkmrks
+fi
+touch $BKMRKS
+
