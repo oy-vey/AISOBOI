@@ -15,3 +15,5 @@ rm temp_graph2.tsv;
 #importing graphs to habse via importtsv
 hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns=HBASE_ROW_KEY,cf:out,cf:in,weight skokleenko-graph-1 /user/hbase/graph1.tsv;
 hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns=HBASE_ROW_KEY,cf:out,cf:in,weight skokleenko-graph-2 /user/hbase/graph2.tsv;
+echo 'count "skokleenko-graph-1"' | hbase shell; #321918 rows
+echo 'count "skokleenko-graph-2"' | hbase shell; #53380274 rows
