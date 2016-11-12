@@ -1,4 +1,4 @@
-#creating hbase tables : cf is a cloumn family for output vertex ("cf:out") and input ("cf:in") vertexcolumns
+#creating hbase tables : cf is a cloumn family for output vertex ("cf:out") and input ("cf:in") vertex columns
 echo 'create "skokleenko-graph-1", "cf", "weight"' | hbase shell;
 echo 'create "skokleenko-graph-2", "cf", "weight"' | hbase shell;
 #creating temp tsv file with ID for HBASE_ROW_KEY
