@@ -31,7 +31,7 @@ int main() {
 
   std::ofstream out("output.bin", std::fstream::out | std::fstream::binary);
   Write(elements, out);
-  for (uint64_t iter = 0; iter <= elements; ++iter) {
+  for (uint64_t iter = 0; iter < elements; ++iter) {
     //uint64_t r = rand()%(max-min + 1) + min;
     //std::cout << "Random" << iter << '=' << r << std::endl;
     Write<uint64_t>(buffer[iter], out);
