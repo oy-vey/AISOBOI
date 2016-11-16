@@ -1,10 +1,15 @@
 // C++ program to implement external sorting using 
 // merge sort
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 #include <climits>
 #include <random>
 #include <algorithm>
 #include <fstream>
+#include <math.h>
 #pragma warning(disable: 4996)
 
 
@@ -19,7 +24,7 @@ inline void Write(T val, std::ofstream& out) {
 struct MinHeapNode
 {
     // The element to be stored
-    int element;
+    uint64_t element;
  
     // index of the array from which the element is taken
     int i;
@@ -100,9 +105,6 @@ void swap(MinHeapNode* x, MinHeapNode* y)
     *y = temp;
 }
  
-// Merges two subarrays of arr[].
-// First subarray is arr[l..m]
-// Second subarray is arr[m+1..r]
 
  
 FILE* openFile(char* fileName, char* mode)
@@ -137,6 +139,7 @@ void mergeFiles(char *output_file, char *input_file, int n, int k)
 	f.open(input_file, ios::in | ios::binary);
 	uint64_t elements;
 	f.read((char *)&elements, sizeof(elements));
+	f.close();
 	ofstream output("output.bin", std::fstream::out | std::fstream::binary);
 	output.write((char*)&elements, sizeof(elements));
 	
@@ -149,7 +152,7 @@ void mergeFiles(char *output_file, char *input_file, int n, int k)
     {
         // break if no output file is empty and
         // index i will be no. of input files
-        if (fscanf(in[i], "%d ", &harr[i].element) != 1)
+        if (fscanf(in[i], " %" PRId64, &harr[i].element) != 1)
             break;
  
         harr[i].i = i; // Index of scratch output file
@@ -170,9 +173,9 @@ void mergeFiles(char *output_file, char *input_file, int n, int k)
         // Find the next element that will replace current
         // root of heap. The next element belongs to same
         // input file as the current min element.
-        if (fscanf(in[root.i], "%d ", &root.element) != 1 )
+        if (fscanf(in[root.i], " %" PRId64, &root.element) != 1 )
         {
-            root.element = INT_MAX;
+            root.element = pow(2, 60);
             count++;
         }
  
@@ -238,7 +241,7 @@ void createInitialRuns(char *input_file, int run_size,
 
 			i = 0;
 			more_input = false;
-			while (f.read((char*)&arr[i], sizeof elements) && i < run_size)
+			while ( i < run_size && f.read((char*)&arr[i], sizeof elements))
 			{
 				more_input = true;
 				++i;
@@ -252,7 +255,7 @@ void createInitialRuns(char *input_file, int run_size,
         // can't assume that the loop runs to run_size
         // since the last run's length may be less than run_size
         for (int j = 0; j < i; j++)
-            fprintf(out[next_output_file], "%i ", arr[j]);
+            fprintf(out[next_output_file], "% " PRId64, arr[j]);
  
         next_output_file++;
     }
@@ -284,7 +287,7 @@ int main()
     int num_ways = 10;
  
     // The size of each partition
-    int run_size = 131072; //131072
+	int run_size = 101072; //131072
 
  
     char input_file[] = "input.bin";
