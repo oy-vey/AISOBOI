@@ -12,7 +12,7 @@ inline void Write(T val, std::ofstream& out) {
 int main(int argc, char* argv[]) {
 	
 
-	uint64_t elements = static_cast<uint64_t>(atoi(argv[1]));
+	uint64_t elements = 10;
 	uint64_t min = 1;
 	uint64_t max = pow(2, 60);
 

@@ -3,13 +3,23 @@
 #include <stdio.h>
 #include <climits>
 #include <random>
+#include <algorithm>
+#include <fstream>
+#pragma warning(disable: 4996)
+
 
 using namespace std;
  
+template<typename T>
+inline void Write(T val, std::ofstream& out) {
+	out.write((char*)&val, sizeof(T));
+}
+
+
 struct MinHeapNode
 {
     // The element to be stored
-    uint64_t element;
+    int element;
  
     // index of the array from which the element is taken
     int i;
@@ -93,61 +103,7 @@ void swap(MinHeapNode* x, MinHeapNode* y)
 // Merges two subarrays of arr[].
 // First subarray is arr[l..m]
 // Second subarray is arr[m+1..r]
-void merge(int arr[], int l, int m, int r)
-{
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
- 
-    /* create temp arrays */
-    int L[n1], R[n2];
- 
-    /* Copy data to temp arrays L[] and R[] */
-    for(i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for(j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
- 
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0; // Initial index of first subarray
-    j = 0; // Initial index of second subarray
-    k = l; // Initial index of merged subarray
-    while (i < n1 && j < n2)
-    {
-        if (L[i] <= R[j])
-            arr[k++] = L[i++];
-        else
-            arr[k++] = R[j++];
-    }
- 
-    /* Copy the remaining elements of L[], if there
-       are any */
-    while (i < n1)
-        arr[k++] = L[i++];
- 
-    /* Copy the remaining elements of R[], if there
-       are any */
-    while(j < n2)
-        arr[k++] = R[j++];
-}
- 
-/* l is for left index and r is right index of the
-   sub-array of arr to be sorted */
-void mergeSort(int arr[], int l, int r)
-{
-    if (l < r)
-    {
-        // Same as (l+r)/2, but avoids overflow for
-        // large l and h
-        int m = l + (r - l) / 2;
- 
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
- 
-        merge(arr, l, m, r);
-    }
-}
+
  
 FILE* openFile(char* fileName, char* mode)
 {
@@ -162,9 +118,9 @@ FILE* openFile(char* fileName, char* mode)
  
 // Merges k sorted files.  Names of files are assumed
 // to be 1, 2, 3, ... k
-void mergeFiles(char *output_file, int n, int k)
+void mergeFiles(char *output_file, char *input_file, int n, int k)
 {
-    FILE* in[k];
+    FILE* in[10];
     for (int i = 0; i < k; i++)
     {
         char fileName[2];
@@ -173,11 +129,17 @@ void mergeFiles(char *output_file, int n, int k)
         snprintf(fileName, sizeof(fileName), "%d", i);
  
         // Open output files in read mode.
-        in[i] = openFile(fileName, "rb");
+        in[i] = openFile(fileName, "r");
     }
  
     // FINAL OUTPUT FILE
-    FILE *out = openFile(output_file, "wb");
+	fstream f;
+	f.open(input_file, ios::in | ios::binary);
+	uint64_t elements;
+	f.read((char *)&elements, sizeof(elements));
+	ofstream output("output.bin", std::fstream::out | std::fstream::binary);
+	output.write((char*)&elements, sizeof(elements));
+	
  
     // Create a min heap with k heap nodes.  Every heap node
     // has first element of scratch output file
@@ -203,7 +165,7 @@ void mergeFiles(char *output_file, int n, int k)
     {
         // Get the minimum element and store it in output file
         MinHeapNode root = hp.getMin();
-        fprintf(out, "%d ", root.element);
+        Write<uint64_t>(root.element, output);
  
         // Find the next element that will replace current
         // root of heap. The next element belongs to same
@@ -222,7 +184,7 @@ void mergeFiles(char *output_file, int n, int k)
     for (int i = 0; i < k; i++)
         fclose(in[i]);
  
-    fclose(out);
+	output.close();
 }
  
 // Using a merge-sort algorithm, create the initial runs
@@ -231,48 +193,66 @@ void createInitialRuns(char *input_file, int run_size,
                        int num_ways)
 {
     // For big input file
-    FILE *in = openFile(input_file, "rb");
+	//2
+	fstream f;
+	f.open(input_file, ios::in | ios::binary);
+	uint64_t elements;
+	f.read((char *)&elements, sizeof(elements));
+	
+    //FILE *in = openFile(input_file, "rb");
  
     // output scratch files
-    FILE* out[num_ways];
+    FILE* out[10];
     char fileName[2];
     for (int i = 0; i < num_ways; i++)
     {
         // convert i to string
-        snprintf(fileName, sizeof(fileName), "%d", i);
+        snprintf(fileName, sizeof(fileName), "%i", i);
  
         // Open output files in write mode.
-        out[i] = openFile(fileName, "wb");
+        out[i] = openFile(fileName, "w");
     }
  
     // allocate a dynamic array large enough
     // to accommodate runs of size run_size
-    int* arr = (int*)malloc(run_size * sizeof(int));
+	uint64_t * arr = new uint64_t[run_size];
  
     bool more_input = true;
     int next_output_file = 0;
  
     int i;
+	
+	
+	//ifstream input(input_file, ifstream::in | ifstream::binary);
+	
+
+	
+
+	
+
+
     while (more_input)
     {
+		
         // write run_size elements into arr from input file
-        for (i = 0; i < run_size; i++)
-        {
-            if (fscanf(in, "%d ", &arr[i]) != 1)
-            {
-                more_input = false;
-                break;
-            }
-        }
+
+			i = 0;
+			more_input = false;
+			while (f.read((char*)&arr[i], sizeof elements) && i < run_size)
+			{
+				more_input = true;
+				++i;
+			}
+
  
         // sort array using merge sort
-        mergeSort(arr, 0, i - 1);
+		sort(arr, arr + run_size);
  
         // write the records to the appropriate scratch output file
         // can't assume that the loop runs to run_size
         // since the last run's length may be less than run_size
         for (int j = 0; j < i; j++)
-            fprintf(out[next_output_file], "%d ", arr[j]);
+            fprintf(out[next_output_file], "%i ", arr[j]);
  
         next_output_file++;
     }
@@ -281,7 +261,7 @@ void createInitialRuns(char *input_file, int run_size,
     for (int i = 0; i < num_ways; i++)
         fclose(out[i]);
  
-    fclose(in);
+	f.close();
 }
  
 // For sorting data stored on disk
@@ -293,7 +273,7 @@ void externalSort(char* input_file,  char *output_file,
     createInitialRuns(input_file, run_size, num_ways);
  
     // Merge the runs using the K-way merging
-    mergeFiles(output_file, run_size, num_ways);
+    mergeFiles(output_file, input_file, run_size, num_ways);
 }
  
  
@@ -304,12 +284,12 @@ int main()
     int num_ways = 10;
  
     // The size of each partition
-    int run_size = 1000;
+    int run_size = 131072; //131072
+
  
     char input_file[] = "input.bin";
     char output_file[] = "output.bin";
- 
-    //FILE* in = openFile(input_file, "wb");
+	
  
     externalSort(input_file, output_file, num_ways,
                 run_size);

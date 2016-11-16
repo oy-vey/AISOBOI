@@ -16,7 +16,7 @@ void Read_file(fstream&f, string filename)
                     f.clear();
                     f.seekg(0);
              }
-             cout << "Content of : " << filename << endl;
+             //cout << "Content of : " << filename << endl;
              while(f.read((char*)&x, sizeof x))
              {
                     cout << x << " " ;
