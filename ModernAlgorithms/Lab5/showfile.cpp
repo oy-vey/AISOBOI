@@ -1,25 +1,36 @@
-#include <cstdint>
 #include <iostream>
+#include <stdlib.h>
 #include <fstream>
-#include <cmath>
+using namespace std;
 
-int main() {
-     char filename[20];
-    std::cin >> filename;
-    std::ifstream fin(filename, std::ifstream::in | std::ifstream::binary);
 
-    uint64_t elements = 0;
-    //std::cout << sizeof(elements) << std::endl;
+void Read_file(fstream&f, string filename)
+{
+       uint64_t x;
+       f.open(filename, ios::in|ios::binary);
+       if(f.is_open())
+       {
+             if(f.eof())
+             {
+                    f.clear();
+                    f.seekg(0);
+             }
+             //cout << "Content of : " << filename << endl;
+             while(f.read((char*)&x, sizeof x))
+             {
+                    cout << x << endl ;
+             }
+       }
+       else
+       {
+             cout << "Error opening file" << endl;
+             exit(1);
+       }
+       f.close();
+}
 
-    fin.read((char *)&elements, sizeof(elements));
-    std::cout << elements << std::endl;
-
-    uint64_t * buffer = new uint64_t [elements];
-    fin.read((char *)buffer, elements * sizeof(elements));//Extracts elements2 characters from the stream and stores them in the array pointed to by s.
-    fin.close();
-    for (int j = 0; j < elements; j++) {
-        std::cout << buffer[j] <<' '<< sizeof(buffer[j] ) << std::endl;
-    }
-     //   std::cout << std::endl;
-    return 0;
+int main (int argc, char* argv[]) {
+  fstream f1;
+  Read_file(f1, argv[1]);
+  return 0;
 }

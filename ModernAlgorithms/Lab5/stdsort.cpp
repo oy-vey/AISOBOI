@@ -1,12 +1,11 @@
 // C++ program to implement external sorting using 
 // merge sort
-//#define __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS 1
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <climits>
-//#include <random>
 #include <algorithm>
 #include <fstream>
 #include <cmath>
@@ -120,12 +119,12 @@ FILE* openFile(char* fileName, char* mode)
 
 // Merges k sorted files.  Names of files are assumed
 // to be 1, 2, 3, ... k
-void mergeFiles(char *output_file, char *input_file, int n, int k)
+void mergeFiles(char *output_file, char *input_file, int k)
 {
-	FILE* in[10];
+	FILE* in[32];
 	for (int i = 0; i < k; i++)
 	{
-		char fileName[2];
+		char fileName[3];
 
 		// convert i to string
 		snprintf(fileName, sizeof(fileName), "%d", i);
@@ -140,7 +139,7 @@ void mergeFiles(char *output_file, char *input_file, int n, int k)
 	uint64_t elements;
 	f.read((char *)&elements, sizeof(elements));
 	f.close();
-	ofstream output("output.bin", std::fstream::out | std::fstream::binary);
+	ofstream output(output_file, std::fstream::out | std::fstream::binary);
 	output.write((char*)&elements, sizeof(elements));
 
 
@@ -205,8 +204,8 @@ void createInitialRuns(char *input_file, int run_size,
 	//FILE *in = openFile(input_file, "rb");
 
 	// output scratch files
-	FILE* out[10];
-	char fileName[2];
+	FILE* out[32];
+	char fileName[3];
 	for (int i = 0; i < num_ways; i++)
 	{
 		// convert i to string
@@ -276,7 +275,7 @@ void externalSort(char* input_file, char *output_file,
 	createInitialRuns(input_file, run_size, num_ways);
 
 	// Merge the runs using the K-way merging
-	mergeFiles(output_file, input_file, run_size, num_ways);
+	mergeFiles(output_file, input_file, num_ways);
 }
 
 
@@ -284,10 +283,10 @@ void externalSort(char* input_file, char *output_file,
 int main()
 {
 	// No. of Partitions of input file.
-	int num_ways = 10;
+	int num_ways = 32;
 
 	// The size of each partition
-	int run_size = 131072; //131072
+	int run_size = 40000; //131072
 
 
 	char input_file[] = "input.bin";
