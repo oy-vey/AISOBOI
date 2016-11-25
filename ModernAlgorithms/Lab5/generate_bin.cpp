@@ -34,5 +34,20 @@ int main(int argc, char* argv[]) {
 	}
 
 	out.close();
+    
+    std::ofstream out2("realoutput.bin", std::fstream::out | std::fstream::binary);
+    Write(elements, out2);
+    for (int iter = elements; iter > 0; --iter) {
+        //srand(time(NULL));
+        //uint64_t r;
+        //r = rand() ;
+        
+        //uint64_t r;
+        //std::cin >> r;
+        //std::cout << "Random" << iter << '=' << max - r << std::endl;
+        Write(max - iter, out2);
+    }
+    
+    out2.close();
 	return 0;
 }
