@@ -1,24 +1,23 @@
 #!/usr/bin/env bash
 show_usage () {                        
-  echo "usage: $(basename "$0") [-h|--help] [-s|--save], [-g|--go], [-p|--print], [-d|--delete] <BOOKMARK_NAME> [-l|--list]";
+  echo 'Type "source bookmarks.sh" to export commands. Use [-h|--help] for more details.';
 }
 
 show_help () {
   show_usage
-  echo 'Options:
-  -h, --help          shows help
-  -s, --save <BOOKMARK_NAME> saves current directory as bookmark 
-  -g, --go <BOOKMARK_NAME> go to bookmark directory (IMPORTANT! USE "." before this command)
-  -p, --print <BOOKMARK_NAME> print bookmark directory
-  -d, --delete <BOOKMARK_NAME> delete bookmark
-  -l, --list list all saved bookmarks   
+  echo 'After executing "source bookmarks.sh" the following commands will be available:
+  s <BOOKMARK_NAME> - saves current directory as bookmark
+  g <BOOKMARK_NAME> - go to bookmark directory
+  p <BOOKMARK_NAME> - print bookmark directory
+  d <BOOKMARK_NAME> - delete bookmark
+  l list all saved bookmarks
 '
 }
 
-function s  {
+function s {
     # shellcheck disable=SC1091
     source "$BKMRKS";
-    CURDIR=$($"PWD");
+    CURDIR=$(echo $PWD | sed 's/\"/\\"/g');
     validate_bname "$1";
     target=$(eval $(echo echo $(echo \$DIR_$1)));
     if [ -z "$exit_message" ]; then
@@ -34,9 +33,9 @@ function g {
      # shellcheck disable=SC1090
     source "$BKMRKS";
     target=$(eval $(echo echo $(echo \$DIR_$1)))
-    if [ -d "$target" ]; then #target is an existing catalog
-        cd "$target" || exit 1;
-    elif [ -z "$target" ]; then #target is empty
+    if [ -d "${target}" ]; then #target is an existing catalog
+        cd "${target}" || exit 1;
+    elif [ -z "${target}" ]; then #target is empty
         echo -e "Error: bookmark '${1}' does not exist"
     else
         echo -e "Error: '${target}' folder does not exist anymore"
@@ -89,16 +88,14 @@ function validate_bname {
 }
 
 command=$1;
-BOOKMARK_NAME=$2;
+#BOOKMARK_NAME=$2;
 
 if [ "$#" == "0" ]; then
   show_usage;
-  exit;
 fi
 
 if [ "$command" == "-h" ] || [ "$command" == "--help" ]; then 
   show_help;
-  exit;
 fi
 
 # setup hidden file to store bookmarks
@@ -106,12 +103,3 @@ if [ ! -n "$BKMRKS" ]; then
     BKMRKS=~/.bkmrks
 fi
 touch $BKMRKS
-
-case "${command}" 
-in "-s"|"--save"*) s "$BOOKMARK_NAME" ;; 
-   "-g"|"--go"*) g "$BOOKMARK_NAME" ;;
-   "-p"|"--print"*) p "$BOOKMARK_NAME" ;;
-   "-d"|"--delete"*) d "$BOOKMARK_NAME" ;;
-   "-l"|"--list"*) l ;;
-    *) show_usage;;
-esac;
