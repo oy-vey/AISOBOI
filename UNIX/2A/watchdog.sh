@@ -30,7 +30,7 @@ fi
 
 
 user_id=$1;
-RESPONSE=$(wget -qO - "https://api.vk.com/method/users.get?user_ids=$user_id&fields=online");
+RESPONSE=$(wget -qO - "https://api.vk.com/method/users.get?user_ids=$user_id&fields=online") || exit 1;
 is_invalid=$(echo "${RESPONSE}" | grep -Po '(?<="error_code":)[0-9]+');
 error_msg=$(echo "${RESPONSE}" | grep -oP '"error_msg":"\K[^"]+');
 if [ -n "${is_invalid}" ]; then

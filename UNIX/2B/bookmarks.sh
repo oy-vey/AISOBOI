@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-show_usage () {                        
-  echo 'Type "source bookmarks.sh" to export commands. Use [-h|--help] for more details.';
-}
+
 
 show_help () {
-  show_usage
   echo 'After executing "source bookmarks.sh" the following commands will be available:
   s <BOOKMARK_NAME> - saves current directory as bookmark
   g <BOOKMARK_NAME> - go to bookmark directory
@@ -13,6 +10,9 @@ show_help () {
   l list all saved bookmarks
 '
 }
+
+RED="0;31m"
+GREEN="0;33m"
 
 function s {
     # shellcheck disable=SC1091
@@ -87,19 +87,45 @@ function validate_bname {
     fi
 }
 
-command=$1;
-#BOOKMARK_NAME=$2;
+show_help;
 
-if [ "$#" == "0" ]; then
-  show_usage;
-fi
+#autocompleteion
 
-if [ "$command" == "-h" ] || [ "$command" == "--help" ]; then 
-  show_help;
-fi
+function _l {
+    source $BKMRKS
+    env | grep "^DIR_" | cut -c5- | sort | grep "^.*=" | cut -f1 -d "=" 
+}
+
+function _comp {
+    local curw
+    COMPREPLY=()
+    curw=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=($(compgen -W '`_l`' -- $curw))
+    return 0
+}
+
+# ZSH completion command
+function _compzsh {
+    reply=($(_l))
+}
+
 
 # setup hidden file to store bookmarks
 if [ ! -n "$BKMRKS" ]; then
     BKMRKS=~/.bkmrks
 fi
 touch $BKMRKS
+
+
+
+# bind completion command for g,p,d to _comp
+if [ $ZSH_VERSION ]; then
+    compctl -K _compzsh g
+    compctl -K _compzsh p
+    compctl -K _compzsh d
+else
+    shopt -s progcomp
+    complete -F _comp g
+    complete -F _comp p
+    complete -F _comp d
+fi
