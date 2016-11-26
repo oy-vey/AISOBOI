@@ -1,0 +1,9 @@
+sh hadoop fs -mkdir /user/pig/;
+sh hadoop fs -chown cloudera /user/pig/;
+sh hadoop fs -put googlebooks-eng-all-2gram-20120701-sk /user/pig/2gram-sk;
+twogram = LOAD '/user/pig/2gram-sk' AS (twogram:chararray, year:chararray, occurrences:int, books:int);
+gtwogram = GROUP twogram BY twogram;
+sgtwogram = FOREACH gtwogram GENERATE group, (float)SUM(twogram.occurrences)/SUM(twogram.books) as avg;
+osgtwogram = ORDER sgtwogram BY avg DESC;
+tosgtwogram = LIMIT osgtwogram 10;
+STORE tosgtwogram INTO '/user/pig/sk-output.txt' using PigStorage('\t');

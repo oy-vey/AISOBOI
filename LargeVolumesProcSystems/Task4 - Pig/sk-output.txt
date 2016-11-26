@@ -1,0 +1,10 @@
+Skill Handbook	59.875
+Skill Handbook_NOUN	58.69643
+Skill_NOUN Handbook	58.436363
+Skill_NOUN Handbook_NOUN	58.254547
+Skills_NOUN Remediation	57.22
+Skills Remediation	57.22
+Skypack_NOUN _._	43.3125
+Skypack _._	41.039215
+Sketch p.	39.467533
+Skutarevsky _VERB_	38.203705
