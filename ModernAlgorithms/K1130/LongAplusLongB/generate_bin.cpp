@@ -10,12 +10,17 @@ inline void Write(T val, std::ofstream& out) {
 int main(int argc, char* argv[]) {
 
 
-	uint64_t N = static_cast<uint64_t>(atoi(argv[1]));
+	uint32_t N = static_cast<uint32_t>(atoi(argv[1]));
+	uint32_t M = static_cast<uint32_t>(atoi(argv[2]));
 
 	std::ofstream out("input.bin", std::fstream::out | std::fstream::binary);
 	Write(N, out);
-	for (uint64_t iter = 1; iter <= N; ++iter) {
-		Write<uint64_t>(iter, out);
+	for (uint32_t iter = 1; iter <= N; ++iter) {
+		Write<uint8_t>(iter , out);
+	}
+	Write(M, out);
+	for (uint32_t iter = 1; iter <= M; ++iter) {
+			Write<uint8_t>(iter , out);
 	}
 	out.close();
 	return 0;
