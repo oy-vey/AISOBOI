@@ -7,7 +7,7 @@ if len(sys.argv) != 2:
     sys.exit(1);
 
 SOCKET_PATH = sys.argv[1]
-lb = 1
+lb = 0
 ub = 1000000000
 
 try:
