@@ -16,29 +16,77 @@ REST был выбран по следующим причинам:
 
 ### Queries
 
-#### Get list of films
-##### Request
-GET films/
-##### Response
-            		  {
-                        "films": [
-                          {
-                            "name": "Fight Club",
-                            "year": 1994,
-                            "genre": ["DRAMA"],
-                            "rating": 8.8,
-                            "actors": [1, 3, 6],
-                            "directors": [2]
-                          },
-                          {
-                            "name": "Brother",
-                            "year": 1997,
-                            "genre": ["DRAMA","CRIME"],
-                            "rating": 8,
-                            "actors": [7, 9, 11],
-                            "directors": [4]
-                          }
-                        ]
-                      }
-
-
+#### 1. Get list of films
+##### Request:
+GET /films/
+##### Response:
+`response.json`
+```json
+ {
+    "films": [
+                {
+                "name": "Fight Club",
+                "year": 1994,
+                "genre": ["DRAMA"],
+                },
+                {
+                "name": "Brother",
+                "year": 1997,
+                "genre": ["DRAMA","CRIME"],
+                }
+            ]
+}
+```
+#### 2. Get specific film
+##### Request:
+GET /films/{id}
+##### Response:
+`response.json`
+```json
+{
+    "name": "Knockin' on Heaven's Door",
+    "year": 1997,
+    "genre": ["DRAMA"],
+    "rating": 8,
+    "actors": [15, 16],
+    "directors": [21]
+}
+```
+#### 3. Get list of participants
+##### Request:
+GET /participants/
+##### Response:
+`response.json`
+```json
+{
+    "participants": [
+                        {
+                        "name": " Til",
+                        "surname": "Schweiger",
+                        "birth_date": "19-12-1963",
+                        "death_date": null
+                        },
+                        {
+                        "name": "Jan Josef",
+                        "surname": "Liefers",
+                        "birth_date": "08-08-1964",
+                        "death_date": null
+                        }
+                    ]
+}
+```
+#### 4. Get specific participant
+##### Request:
+GET /participants/{id}
+##### Response:
+`response.json`
+```json
+{
+    "name": "Johnny",
+    "surname": "Depp",
+    "birth_date": "09-06-1963",
+    "death_date": null,
+    "country_of_birth": "USA",
+    "Biography": "Person's bio" 
+}
+```
