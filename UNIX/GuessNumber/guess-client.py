@@ -8,7 +8,7 @@ if len(sys.argv) != 2:
 
 SOCKET_PATH = sys.argv[1]
 lb = 0
-ub = 1000000000
+ub = 1000000001
 
 try:
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
