@@ -9,8 +9,8 @@ class Singleton(object):
 class Foo(Singleton):
     def __init__(self, arg):
         self.arg = arg
-        print arg, 'inited!'
+        print(arg, 'inited!')
     def test(self):
-        print self.arg
+        print(self.arg)
 Foo(1).test() #=> 1 inited!\n1
 Foo().test() #=> 1
