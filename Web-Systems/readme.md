@@ -25,11 +25,13 @@ GET /films/
  {
     "films": [
                 {
+				"id": "00001",
                 "name": "Fight Club",
                 "year": 1994,
                 "genre": ["DRAMA"],
                 },
                 {
+				"id": "00002",
                 "name": "Brother",
                 "year": 1997,
                 "genre": ["DRAMA","CRIME"],
@@ -43,7 +45,7 @@ GET /films/{id}
 ##### Response:
 `response.json`
 ```json
-{
+{	"id": "00001",
     "name": "Knockin' on Heaven's Door",
     "year": 1997,
     "genre": ["DRAMA"],
@@ -61,12 +63,14 @@ GET /participants/
 {
     "participants": [
                         {
+						"id": "00001",
                         "name": " Til",
                         "surname": "Schweiger",
                         "birth_date": "19-12-1963",
                         "death_date": null
                         },
                         {
+						"id": "00001",
                         "name": "Jan Josef",
                         "surname": "Liefers",
                         "birth_date": "08-08-1964",
@@ -81,7 +85,8 @@ GET /participants/{id}
 ##### Response:
 `response.json`
 ```json
-{
+{	
+	"id": "00001",
     "name": "Johnny",
     "surname": "Depp",
     "birth_date": "09-06-1963",
