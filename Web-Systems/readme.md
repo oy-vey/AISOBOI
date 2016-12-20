@@ -71,16 +71,46 @@ GET /films/{id}
             "Bob Penny"
         ],
 	"votes": [
-			{"One" : 3},
-			{"Two" : 3},
-			{"Three" : 3},
-			{"Four" : 3},
-			{"Five" : 3},
-			{"Six" : 3},
-			{"Seven" : 3},
-			{"Eight" : 3},
-			{"Nine" : 3},
-			{"Ten" : 3}
+			{
+				"stars" : "One" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Two" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Three" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Four" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Five" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Six" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Seven" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Eight" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Nine" 
+				"votes" : 3
+			},
+			{
+				"stars" : "Ten" 
+				"votes" : 3
+			}
 		]
 			
 }
