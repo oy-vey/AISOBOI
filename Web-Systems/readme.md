@@ -28,14 +28,16 @@ GET /films/
                 {
 				"id": "00001",
                 "name": "Fight Club",
+				"director": "David Fincher",
                 "year": 1994,
-                "genre": ["DRAMA"],
+                "rating": "8.29"
                 },
                 {
 				"id": "00002",
                 "name": "Brother",
+				"director": "Aleksey Balabanov"
                 "year": 1997,
-                "genre": ["DRAMA","CRIME"],
+                "rating": "7.79",
                 }
             ]
 }
@@ -50,12 +52,37 @@ GET /films/{id}
 ```json
 {	
 	"id": "00003",
-    "name": "Knockin' on Heaven's Door",
-    "year": 1997,
-    "genre": ["DRAMA"],
-    "averagerating": 8,
-    "actors": [15, 16],
-    "directors": [21]
+    "name": "Forrest Gump",
+	"director": "Robert Zemeckis",
+    "year": 1994,
+    "rating": "7.29",
+    "image": "http://filmaster.pl/thumbnail/?path=img%2Fobj%2Ff%2Fb2%2F38%2Fforrest-gump.jpg&crop=center&size=180",
+    "description": "Movie description",
+	"actors": [
+            "Tom Hanks",
+            "Robin Wright",
+            "Gary Sinise",
+            "Mykelti Williamson",
+            "Sally Field",
+            "Rebecca Williams",
+            "Michael Conner Humphreys",
+            "Harold G. Herthum",
+            "George Kelly",
+            "Bob Penny"
+        ],
+	"votes": {
+			"1" : 3,
+			"2" : 7,
+			"3" : 11,
+			"4" : 1,
+			"5" : 34,
+			"6" : 56,
+			"7" : 123,
+			"8" : 312312,
+			"9" : 8576586,
+			"10" : 321321,
+		}
+			
 }
 ```
 #### 3. Rate film
