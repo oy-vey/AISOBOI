@@ -8,7 +8,7 @@ REST был выбран по следующим причинам:
 - REST предоставляет хорошие возможности для масштабируемости и расширяемости;
 
 ## API Description:
-### Entities
+### Overview
 - films/ 			# Films collection
 - films/{id} 		# Specific Film
 - films/{id}/{rating} # Rate specific film
