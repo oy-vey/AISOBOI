@@ -1,5 +1,5 @@
 # Movies collection
-
+Сервис представляет из себя коллекцию кинофильмов разных лет с возможностью оценивания понравившихся фильмов по шкале от 1 до 10. На основе пользовательских оценок формируется рейтинг кинофильмов.
 ## Approach (REST/RPC) grounding:
 REST был выбран по следующим причинам:
 - Cерверу не нужно состояние клиента;
@@ -11,8 +11,7 @@ REST был выбран по следующим причинам:
 ### Entities
 - films/ 			# Films collection
 - films/{id} 		# Specific Film
-- participants/ 	# Participants collection (Actor/Director/Producer/Screenwriter)
-- participant/{id}	# Specific participant
+- films/{id}/{rating} # Rate specific film
 
 ### Queries
 
@@ -54,44 +53,10 @@ GET /films/{id}
     "directors": [21]
 }
 ```
-#### 3. Get list of participants
+#### 3. Rate film
 ##### Request:
-GET /participants/
+POST /films/{id}/{rating}
 ##### Response:
-`response.json`
-```json
-{
-    "participants": [
-                        {
-						"id": "00001",
-                        "name": " Til",
-                        "surname": "Schweiger",
-                        "birth_date": "19-12-1963",
-                        "death_date": null
-                        },
-                        {
-						"id": "00002",
-                        "name": "Jan Josef",
-                        "surname": "Liefers",
-                        "birth_date": "08-08-1964",
-                        "death_date": null
-                        }
-                    ]
-}
-```
-#### 4. Get specific participant
-##### Request:
-GET /participants/{id}
-##### Response:
-`response.json`
-```json
-{	
-	"id": "00003",
-    "name": "Johnny",
-    "surname": "Depp",
-    "birth_date": "09-06-1963",
-    "death_date": null,
-    "country_of_birth": "USA",
-    "Biography": "Person's bio" 
-}
-```
+CODE: 
+- Success - 200 HTTP_OK
+- Fail - 404 HTTP_NOT_FOUND
