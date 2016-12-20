@@ -45,7 +45,7 @@ GET /films/
 GET /films/{id}
 ##### Response:
 - Content-Type: application/json
-- Code: Success - 200 HTTP_OK, Fail 404 HTTP_NOT_FOUND
+- Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 - Body `response.json`
 ```json
 {	"id": "00003",
@@ -61,6 +61,4 @@ GET /films/{id}
 ##### Request:
 POST /films/{id}/{rating}
 ##### Response:
-CODE: 
-- Success - 200 HTTP_OK
-- Fail - 404 HTTP_NOT_FOUND
+- Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
