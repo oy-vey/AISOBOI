@@ -35,7 +35,7 @@ GET /films/
                 {
 				"id": "00002",
                 "name": "Brother",
-				"director": "Aleksey Balabanov"
+				"director": "Aleksey Balabanov",
                 "year": 1997,
                 "rating": "7.79",
                 }
