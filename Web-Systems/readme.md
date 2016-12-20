@@ -48,7 +48,8 @@ GET /films/{id}
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 - Body `response.json`
 ```json
-{	"id": "00003",
+{	
+	"id": "00003",
     "name": "Knockin' on Heaven's Door",
     "year": 1997,
     "genre": ["DRAMA"],
