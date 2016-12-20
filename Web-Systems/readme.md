@@ -72,43 +72,43 @@ GET /films/{id}
         ],
 	"votes": [
 			{
-				"stars" : "One" 
+				"stars" : "One",
 				"votes" : 3
 			},
 			{
-				"stars" : "Two" 
+				"stars" : "Two" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Three" 
+				"stars" : "Three" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Four" 
+				"stars" : "Four" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Five" 
+				"stars" : "Five" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Six" 
+				"stars" : "Six" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Seven" 
+				"stars" : "Seven" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Eight" 
+				"stars" : "Eight" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Nine" 
+				"stars" : "Nine" ,
 				"votes" : 3
 			},
 			{
-				"stars" : "Ten" 
+				"stars" : "Ten" ,
 				"votes" : 3
 			}
 		]
