@@ -19,7 +19,9 @@ REST был выбран по следующим причинам:
 ##### Request:
 GET /films/
 ##### Response:
-`response.json`
+- Content-Type: application/json
+- Code: 200 HTTP_OK
+- Body `response.json`
 ```json
  {
     "films": [
@@ -42,7 +44,9 @@ GET /films/
 ##### Request:
 GET /films/{id}
 ##### Response:
-`response.json`
+- Content-Type: application/json
+- Code: Success - 200 HTTP_OK, Fail 404 HTTP_NOT_FOUND
+- Body `response.json`
 ```json
 {	"id": "00003",
     "name": "Knockin' on Heaven's Door",
