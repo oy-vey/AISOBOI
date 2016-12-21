@@ -19,7 +19,7 @@ function s {
     source "$BKMRKS";
     CURDIR=$(echo $PWD | sed 's/\"/\\"/g');
     validate_bname "$1";
-    target=$(eval $(echo echo $(echo \$DIR_$1)));
+    eval "target=\$DIR_$1";
     if [ -z "$exit_message" ]; then
       if [ -z "$target" ]; then
         echo "export DIR_$1=\"$CURDIR\"" >> "$BKMRKS";
@@ -32,7 +32,7 @@ function s {
 function g {
      # shellcheck disable=SC1090
     source "$BKMRKS";
-    target=$(eval $(echo echo $(echo \$DIR_$1)))
+    eval "target=\$DIR_$1"
     if [ -d "${target}" ]; then #target is an existing catalog
         cd "${target}" || exit 1;
     elif [ -z "${target}" ]; then #target is empty
@@ -45,29 +45,29 @@ function g {
 function p {
     # shellcheck disable=SC1090
     source "$BKMRKS"
-    target=$(eval $(echo echo $(echo \$DIR_$1)))
+    eval "target=\$DIR_$1"
     if [ -n "$target" ]; then
       echo $(eval $(echo echo $(echo \$DIR_$1)))
     else
       echo -e "Error: bookmark '${1}' does not exist";
     fi;
-    
+
 }
 
 function d {
   # shellcheck disable=SC1090
   source "$BKMRKS"
   validate_bname "$1";
-  target=$(eval $(echo echo $(echo \$DIR_$1)))
+  eval "target=\$DIR_$1"
   if [ -z "$exit_message" ]; then
     if [ -n "$target" ]; then
       unset "DIR_$1";
-      sed -i "" "/^export DIR_${1}/d" "$BKMRKS";
+      sed -i "/^export DIR_${1}/d" "$BKMRKS";
     else
       echo -e "Error: bookmark '${1}' does not exist";
     fi;
   fi;
-    
+
 }
 
 function l {
@@ -93,7 +93,7 @@ show_help;
 
 function _l {
     source $BKMRKS
-    env | grep "^DIR_" | cut -c5- | sort | grep "^.*=" | cut -f1 -d "=" 
+    env | grep "^DIR_" | cut -c5- | sort | grep "^.*=" | cut -f1 -d "="
 }
 
 function _comp {
