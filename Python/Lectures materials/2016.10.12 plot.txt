@@ -1,0 +1,23 @@
+matplotlib 
+http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb
+http://jakevdp.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/
+
+pandas
+http://pandas.pydata.org/pandas-docs/stable/visualization.html
+
+matta
+http://nbviewer.ipython.org/github/carnby/matta/blob/master/examples/Basic%20Examples.ipynb
+
+chaco
+http://docs.enthought.com/chaco/user_manual/chaco_tutorial.html#tutorial
+http://docs.enthought.com/chaco/user_manual/tutorial_ipython.html#tutorial-ipython
+
+mayavi
+http://mayavi.sourceforge.net/screenshots/index.html
+
+plot.ly
+https://plot.ly/~empet/folder/home
+
+
+P.S. Весь курс scientific-python-lectures так же полезен к изучению 
+http://nbviewer.jupyter.org/github/jrjohansson/scientific-python-lectures/tree/master/
