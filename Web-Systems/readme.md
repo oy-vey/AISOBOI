@@ -24,13 +24,19 @@ GET /films/
 - Body `response.json`
 ```json
  {
+	"links": {
+			 "self" : "/films"
+			}
     "films": [
                 {
 				"id": "00001",
                 "name": "Fight Club",
 				"director": "David Fincher",
                 "year": 1994,
-                "rating": "8.29"
+                "rating": "8.29",
+				"links": {
+							"self" : "/films/00001"
+						 }
                 },
                 {
 				"id": "00002",
@@ -38,6 +44,9 @@ GET /films/
 				"director": "Aleksey Balabanov",
                 "year": 1997,
                 "rating": "7.79",
+				"links": {
+							"self" : "/films/00002"
+						 }
                 }
             ]
 }
@@ -51,6 +60,9 @@ GET /films/{id}
 - Body `response.json`
 ```json
 {	
+	"links": {
+				"self" : "/films/00003"
+			}
 	"id": "00003",
     "name": "Forrest Gump",
 	"director": "Robert Zemeckis",
