@@ -26,7 +26,7 @@ GET /films/
  {
 	"links": {
 			 "self" : "/films"
-			}
+			},
     "films": [
                 {
 				"id": "00001",
@@ -62,7 +62,7 @@ GET /films/{id}
 {	
 	"links": {
 				"self" : "/films/00003"
-			}
+			 },
 	"id": "00003",
     "name": "Forrest Gump",
 	"director": "Robert Zemeckis",
