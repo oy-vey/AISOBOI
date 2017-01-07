@@ -85,43 +85,43 @@ GET /films/{id}
 	"votes": [
 			{
 				"stars" : "One",
-				"votes" : 3
+				"votes" : ["111","222"]
 			},
 			{
 				"stars" : "Two" ,
-				"votes" : 3
+				"votes" : ["333", "4444"]
 			},
 			{
 				"stars" : "Three" ,
-				"votes" : 3
+				"votes" : ["555"]
 			},
 			{
 				"stars" : "Four" ,
-				"votes" : 3
+				"votes" : ["666"]
 			},
 			{
 				"stars" : "Five" ,
-				"votes" : 3
+				"votes" : ["777", "888"]
 			},
 			{
 				"stars" : "Six" ,
-				"votes" : 3
+				"votes" : ["999"]
 			},
 			{
 				"stars" : "Seven" ,
-				"votes" : 3
+				"votes" : ["101", "102", "103"]
 			},
 			{
 				"stars" : "Eight" ,
-				"votes" : 3
+				"votes" : []
 			},
 			{
 				"stars" : "Nine" ,
-				"votes" : 3
+				"votes" : ["104", "105"]
 			},
 			{
 				"stars" : "Ten" ,
-				"votes" : 3
+				"votes" : ["106", "107", "108", "109", "110"]
 			}
 		]
 			
@@ -129,6 +129,6 @@ GET /films/{id}
 ```
 #### 3. Rate film
 ##### Request:
-POST /films/{id}/{rating}
+POST /films/{id}/{rating}?user=111
 ##### Response:
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
