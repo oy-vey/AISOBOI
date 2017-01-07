@@ -1,0 +1,1 @@
+mongoimport --db MoviesDB --collection MoviesCollection --type json --file MoviesCollection.json && mongoimport --db MoviesDB --collection MoviesDetailed --type json --file MoviesDetailed.json
