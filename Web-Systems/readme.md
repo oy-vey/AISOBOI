@@ -138,6 +138,7 @@ POST /films/{id}/{rating}?user=111
 - Intel Core i5-4570
 - 4GB RAM
 - Ubuntu 16.04
+
 ### Запросы:
 ```
 GET /films/
