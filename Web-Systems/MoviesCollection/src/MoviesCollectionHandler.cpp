@@ -111,7 +111,16 @@ void MoviesCollectionHandler::RespondMovie(fastcgi::Request *request, std::strin
 }
 
 void MoviesCollectionHandler::RateMovie(fastcgi::Request *request, std::string& MovieId, std::string& Rating, std::string& UserId)
-{
+{   
+    //Check if movie exists
+    std::string response;
+
+    response = mongoHand->GetMovie(MovieId);
+    if (response.empty()){
+        request->setStatus(404);
+    }
+    
+
     long Mark = -1;
     try {
         Mark = std::stoi(Rating);
@@ -123,6 +132,9 @@ void MoviesCollectionHandler::RateMovie(fastcgi::Request *request, std::string& 
 		std::to_string(Mark) != Rating) {
         request->setStatus(404);
     }
-    mongoHand->AddRating(MovieId, Mark, UserId);
+    else{
+        mongoHand->AddRating(MovieId, Mark, UserId);
+    }
+    
 }
 
