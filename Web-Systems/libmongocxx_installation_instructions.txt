@@ -1,0 +1,32 @@
+# Installing the MongoDB C Driver
+wget https://github.com/mongodb/mongo-c-driver/releases/download/1.5.1/mongo-c-driver-1.5.1.tar.gz
+tar xzf mongo-c-driver-1.5.1.tar.gz
+cd mongo-c-driver-1.5.1
+./configure
+make
+sudo make install
+
+
+# Boost 1.56.0 installation
+wget https://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.gz
+tar -xvzf boost_1_56_0.tar.gz
+cd boost_1_56_0/
+./bootstrap.sh --with-libraries=atomic,date_time,exception,filesystem,iostreams,locale,program_options,regex,signals,system,test,thread,timer,log
+sudo ./b2 install
+
+
+
+# Download the latest version of the mongocxx driver.
+git clone https://github.com/mongodb/mongo-cxx-driver.git \
+    --branch releases/stable --depth 1
+cd mongo-cxx-driver/build
+cmake -DCMAKE_BUILD_TYPE=Release -DBSONCXX_POLY_USE_MNMLSTC=1 \
+    -DCMAKE_INSTALL_PREFIX=/usr/local ..
+
+# Build and install the driver
+sudo make EP_mnmlstc_core
+make && sudo make install
+
+
+
+
