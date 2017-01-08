@@ -31,7 +31,7 @@ public:
 
     std::string GetMovie(std::string& MovieId);
 	
-	void AddRating(std::string& MovieId, long Mark, std::string& UserId);
+	void AddRating(std::string& MovieId, std::string& Rating, std::string& UserId);
 
 private:
 

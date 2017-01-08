@@ -70,6 +70,7 @@ void MoviesCollectionHandler::ScheduleRequest(fastcgi::Request *request)
 
     }
 	else if (IsMovieRate(path, method, MovieId, Rating)){
+
 		if (UserId != ""){
 			RateMovie(request, MovieId, Rating, UserId);
 		}
@@ -120,20 +121,13 @@ void MoviesCollectionHandler::RateMovie(fastcgi::Request *request, std::string& 
         request->setStatus(404);
     }
     
-
-    long Mark = -1;
-    try {
-        Mark = std::stoi(Rating);
-    } catch (...) { }
-	
-	
-    if (Mark != 1 || Mark != 2 || Mark != 3 || Mark != 4 || Mark != 5 || 
-		Mark != 6 || Mark != 7 || Mark != 8|| Mark != 9 || Mark != 10 || 
-		std::to_string(Mark) != Rating) {
+    if (Rating != "1" && Rating != "2" && Rating != "3" && Rating != "4" && Rating != "5" && 
+		Rating != "6" && Rating != "7" && Rating != "8" && Rating != "9" && Rating != "10") {
         request->setStatus(404);
     }
     else{
-        mongoHand->AddRating(MovieId, Mark, UserId);
+        mongoHand->AddRating(MovieId, Rating, UserId);
+		request->setStatus(200);
     }
     
 }

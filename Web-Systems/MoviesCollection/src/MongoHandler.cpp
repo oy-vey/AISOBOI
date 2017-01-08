@@ -54,18 +54,18 @@ std::string MongoHandler::GetMovie(std::string &MovieId)
 	
 }
 
-void MongoHandler::AddRating(std::string& MovieId, long Mark, std::string& UserId){
+void MongoHandler::AddRating(std::string& MovieId, std::string& Rating, std::string& UserId){
 	mongocxx::client& localClient = getClient();
     mongocxx::database db = localClient["MoviesDB"];
     mongocxx::collection coll = db["MoviesDetailed"];
-	std::string Rating = Mark == 1 ? "One" : Mark == 2 ? "Two" :  Mark == 3 ? "Three" :  Mark == 4 ? "Four" :
-						Mark == 5 ? "Five" : Mark == 6 ? "Six" :  Mark == 7 ? "Seven" :  Mark == 8 ? "Eight" :  Mark == 9 ? "Nine" :  Mark == 10 ? "Ten" : "";
+	std::string strRating = Rating == "1" ? "One" : Rating == "2" ? "Two" :  Rating == "3" ? "Three" :  Rating == "4" ? "Four" :
+						Rating == "5" ? "Five" : Rating == "6" ? "Six" :  Rating == "7" ? "Seven" :  Rating == "8" ? "Eight" :  Rating == "9" ? "Nine" :  Rating == "10" ? "Ten" : "";
 	mongocxx::stdx::optional<bsoncxx::document::value> maybe_result = coll.find_one(document{} << "id" << MovieId << "votes.Votes" << UserId << finalize); 
 	if (maybe_result){
 		// If already had voted - ignore for now
 	}
 	else{
-		coll.update_one(document{} << "id" << MovieId << "votes.Stars" << Rating << finalize,
+		coll.update_one(document{} << "id" << MovieId << "votes.Stars" << strRating << finalize,
                         document{} << "$addToSet" << open_document <<
                         "votes.$.Votes" << UserId << close_document << finalize);
 	}
