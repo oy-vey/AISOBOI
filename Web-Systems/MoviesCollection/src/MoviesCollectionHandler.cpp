@@ -49,7 +49,7 @@ void MoviesCollectionHandler::ScheduleRequest(fastcgi::Request *request)
     auto &method = request->getRequestMethod();
 	std::string UserId = request->hasArg("user") ? request->getArg("user") : "";
 
-    request->setContentType("application/json");
+    //request->setContentType("application/json"); // application/vnd.com.MyMovies.films+json and application/vnd.com.MyMovies.film+json
 
     std::string MovieId, Rating;
 
@@ -91,7 +91,7 @@ void MoviesCollectionHandler::RespondMoviesCollection(fastcgi::Request *request)
     std::string response;
 
     response = mongoHand->GetMoviesCollection();
-
+	request->setContentType("application/vnd.com.MyMovies.films+json");
     request->write(response.c_str(), response.size());
 
 }
@@ -102,6 +102,7 @@ void MoviesCollectionHandler::RespondMovie(fastcgi::Request *request, std::strin
 
     response = mongoHand->GetMovie(MovieId);
 	if (!response.empty()){
+		request->setContentType("application/vnd.com.MyMovies.film+json");
 		request->write(response.c_str(), response.size());
 	}
 	else {
