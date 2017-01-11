@@ -138,7 +138,7 @@ POST /films/{id}/{rating}?user=111
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 
 
-<a name="footnote">1 - </a> <i> "Rating" field not implemented yet </i>
+<i><a name="footnote">1 - </a>"Rating" field not implemented yet</i>
 
 ## Load Testing
 ### Параметры машины:
