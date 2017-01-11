@@ -19,7 +19,7 @@ Web-server : Nginx 1.1.19
 - films/{id} 		# Specific Film
 - films/{id}/{rating} # Rate specific film
 
-#### 1. Get list of films <sup>[1]</sup>
+#### 1. Get list of films <sup>[1](#footnote)</sup>
 ##### Request:
 GET /films/
 ##### Response:
@@ -55,7 +55,7 @@ GET /films/
             ]
 }
 ```
-#### 2. Get specific film<sup>[1]</sup>
+#### 2. Get specific film<sup>[1](#footnote)</sup>
 ##### Request:
 GET /films/{id}
 ##### Response:
@@ -138,8 +138,6 @@ POST /films/{id}/{rating}?user=111
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 
 
-[^1]: "Rating" field not implemented yet 
-
 ## Load Testing
 ### Параметры машины:
 - Intel Core i5-4570
@@ -169,3 +167,4 @@ GET /films/{id}
 Загруженность CPU на этом уровне составляет ~75-80%. Следовательно, можно считать данный уровень оптимальным.
 
 
+<a name="footnote">1 - </a> "Rating" field not implemented yet
