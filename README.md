@@ -1,2 +1,2 @@
-# AISOBOI 
-Repository with task from my masters degree courses
+# AISOBOI - Algorithms and system processing large amounts of information
+Repository with tasks and solutions from my masters degree courses
