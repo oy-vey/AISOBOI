@@ -118,8 +118,12 @@ void MoviesCollectionHandler::RateMovie(fastcgi::Request *request, std::string& 
     std::string response;
 
     response = mongoHand->GetMovie(MovieId);
-    if (response.empty() || (Rating != "1" && Rating != "2" && Rating != "3" && Rating != "4" && Rating != "5" && 
-		Rating != "6" && Rating != "7" && Rating != "8" && Rating != "9" && Rating != "10")){
+    if (response.empty()){
+        request->setStatus(404);
+    }
+    
+    if (Rating != "1" && Rating != "2" && Rating != "3" && Rating != "4" && Rating != "5" && 
+		Rating != "6" && Rating != "7" && Rating != "8" && Rating != "9" && Rating != "10") {
         request->setStatus(404);
     }
     else{
