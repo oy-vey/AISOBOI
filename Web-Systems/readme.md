@@ -19,7 +19,7 @@ Web-server : Nginx 1.1.19
 - films/{id} 		# Specific Film
 - films/{id}/{rating} # Rate specific film
 
-#### 1. Get list of films[^1]
+#### 1. Get list of films <sup>[1]</sup>
 ##### Request:
 GET /films/
 ##### Response:
@@ -55,7 +55,7 @@ GET /films/
             ]
 }
 ```
-#### 2. Get specific film[^1]
+#### 2. Get specific film<sup>[1]</sup>
 ##### Request:
 GET /films/{id}
 ##### Response:
