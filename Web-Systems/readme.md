@@ -138,6 +138,8 @@ POST /films/{id}/{rating}?user=111
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 
 
+<a name="footnote">1 - </a> <i> "Rating" field not implemented yet </i>
+
 ## Load Testing
 ### Параметры машины:
 - Intel Core i5-4570
@@ -166,5 +168,3 @@ GET /films/{id}
 [800 rps](https://overload.yandex.net/6206)
 Загруженность CPU на этом уровне составляет ~75-80%. Следовательно, можно считать данный уровень оптимальным.
 
-
-<a name="footnote">1 - </a> "Rating" field not implemented yet
