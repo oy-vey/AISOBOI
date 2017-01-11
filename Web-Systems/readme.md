@@ -138,9 +138,12 @@ POST /films/{id}/{rating}?user=111
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <i><a name="footnote">1 - </a>"Rating" field not implemented yet</i>
 
+=======
+>>>>>>> parent of 68cd573... updated
 =======
 >>>>>>> parent of 68cd573... updated
 ## Load Testing
