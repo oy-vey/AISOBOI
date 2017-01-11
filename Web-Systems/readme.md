@@ -55,7 +55,7 @@ GET /films/
             ]
 }
 ```
-#### 2. Get specific film<sup>[1](#footnote)</sup>
+#### 2. Get specific film <sup>[1](#footnote)</sup>
 ##### Request:
 GET /films/{id}
 ##### Response:
