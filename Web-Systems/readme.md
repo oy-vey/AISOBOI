@@ -9,17 +9,21 @@ REST был выбран по следующим причинам:
 
 ## API Description:
 ### Overview
+Server : xbyminsd0001.minsk.epam.com (Access for EPAM network is required)
+Port : 666
+Web-server : Nginx 1.1.19
+
+
+### Queries
 - films/ 			# Films collection
 - films/{id} 		# Specific Film
 - films/{id}/{rating} # Rate specific film
 
-### Queries
-
-#### 1. Get list of films
+#### 1. Get list of films[^1]
 ##### Request:
 GET /films/
 ##### Response:
-- Content-Type: application/json
+- Content-Type: application/vnd.com.MyMovies.films+json
 - Code: 200 HTTP_OK
 - Body `response.json`
 ```json
@@ -51,11 +55,11 @@ GET /films/
             ]
 }
 ```
-#### 2. Get specific film
+#### 2. Get specific film[^1]
 ##### Request:
 GET /films/{id}
 ##### Response:
-- Content-Type: application/json
+- Content-Type: application/vnd.com.MyMovies.film+json
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 - Body `response.json`
 ```json
@@ -132,6 +136,9 @@ GET /films/{id}
 POST /films/{id}/{rating}?user=111
 ##### Response:
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
+
+
+[^1]: "Rating" field not implemented yet 
 
 ## Load Testing
 ### Параметры машины:
