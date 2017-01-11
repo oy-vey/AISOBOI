@@ -23,7 +23,7 @@ Web-server : Nginx 1.1.19
 ##### Request:
 GET /films/
 ##### Response:
-- Content-Type: application/vnd.com.MyMovies.films+json
+- Content-Type: `application/vnd.com.MyMovies.films+json`
 - Code: 200 HTTP_OK
 - Body `response.json`
 ```json
@@ -59,7 +59,7 @@ GET /films/
 ##### Request:
 GET /films/{id}
 ##### Response:
-- Content-Type: application/vnd.com.MyMovies.film+json
+- Content-Type: `application/vnd.com.MyMovies.film+json`
 - Code: Success - 200 HTTP_OK, Fail - 404 HTTP_NOT_FOUND
 - Body `response.json`
 ```json
