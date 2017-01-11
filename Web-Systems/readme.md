@@ -9,9 +9,9 @@ REST был выбран по следующим причинам:
 
 ## API Description:
 ### Overview
-Server : xbyminsd0001.minsk.epam.com (Access for EPAM network is required)
-Port : 666
-Web-server : Nginx 1.1.19
+- Server : xbyminsd0001.minsk.epam.com (Access for EPAM network is required)
+- Port : 666
+- Web-server : Nginx 1.1.19
 
 
 ### Queries
