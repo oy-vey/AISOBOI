@@ -1,0 +1,3 @@
+[submodule "TwitterSpamClassifier"]
+	path = TwitterSpamClassifier
+	url = https://github.com/oy-vey/TwitterSpamClassifier
