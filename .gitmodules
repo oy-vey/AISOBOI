@@ -1,6 +1,3 @@
-[submodule "TwitterSpamClassifier"]
-	path = TwitterSpamClassifier
-	url = https://github.com/oy-vey/TwitterSpamClassifier
 [submodule "Diploma/bsustyle"]
 	path = Diploma/bsustyle
 	url = https://github.com/oy-vey/bsustyle
