@@ -1,0 +1,20 @@
+%!TEX encoding = DOS Cyrillic
+%!TeX program = xelatex
+\documentclass[a4paper,14pt]{bsustyle/bsureport}
+
+\usepackage{array}
+
+\input{util/abbrev.tex}
+
+\begin{document}
+
+\include{cover/titlepage}
+
+\clearpage
+\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+\tableofcontents
+\include{main/intro}
+
+\include{bib/biblio}
+
+\end{document}
