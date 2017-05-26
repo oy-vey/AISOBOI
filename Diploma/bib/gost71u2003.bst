@@ -2,10 +2,10 @@
 %% This is file `gost71u2003.bst',
 %% modified from `gost780u.bst'.
 %%
-%% 
+%%
 %% Copyright 2009 Vadzim Piatrou.
 %% Version 0.5
-%% 
+%%
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.2
 %% of this license or (at your option) any later version.
@@ -13,11 +13,11 @@
 %%   http://www.latex-project.org/lppl.txt
 %% and version 1.2 or later is part of all distributions of LaTeX
 %% version 1999/12/01 or later.
-%% 
+%%
 %% Please, send bug reports via e-mail:
 %%   thesisby at tut dot by
-%% 
-%% 
+%%
+%%
 %%
 %% This bibliography style attempts
 %% to format bibliography according to
