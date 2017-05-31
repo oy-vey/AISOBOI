@@ -3,7 +3,77 @@
 
 \begin{section}{Проведенные эксперименты}
 
+\begin{subsection}{Подбор параметров по сетке}
+\begin{subsubsection}{kNN}
+  Для алгоритма kNN оптимальной оказалась модель с k = 13 с применением весов, зависящих от расстояния до соседа (см. п. \ref{alg:knn})
+
+  \begin{table}[H]
+  \centering
+  {\begin{tabular}{|l|c|c|}
+  \hline
+  \textbf{Number of neighbors \textit{k}} & \textbf{Weights} & \textbf{Accuracy} \\
+  \hline
+  k = 1 & uniform  & 0.8549 \\
+  \hline
+  k = 1 & distance  & 0.8549 \\
+  \hline
+  k = 3 & uniform  & 0.87634 \\
+  \hline
+  k = 3 &  distance & 0.87596  \\
+  \hline
+  k = 5 & uniform  & 0.88281 \\
+  \hline
+  k = 5 & distance  & 0.88302 \\
+  \hline
+  k = 7 & uniform  & 0.88481 \\
+  \hline
+  k = 7 &  distance & 0.88525  \\
+  \hline
+  k = 9 & uniform  & 0.88546 \\
+  \hline
+  k = 9 & distance  & 0.88635 \\
+  \hline
+  k = 11 & uniform  & 0.88560 \\
+  \hline
+  k = 11 &  distance & 0.88737  \\
+  \hline
+  k = 13 & uniform  & 0.88618 \\
+  \hline
+  \textbf{k = 13} & \textbf{distance}  & \textbf{0.88844} \\
+  \hline
+  k = 15 & uniform  & 0.88612 \\
+  \hline
+  k = 15 &  distance & 0.88802  \\
+  \hline
+  k = 17 & uniform  & 0.88551 \\
+  \hline
+  k = 17 & distance  & 0.88797 \\
+  \hline
+  k = 19 & uniform  & 0.88481 \\
+  \hline
+  k = 19 &  distance & 0.88802  \\
+  \hline
+  \end{tabular}}
+
+  \caption{Подбор по сетке kNN}
+  \label{grid:knn}
+  \end{table}
+
+
+
+\end{subsubsection}
+
+
+\begin{subsubsection}{Наивный байесовский классификатор}
+
+\end{subsubsection}
+
+\end{subsection}
+
 \begin{subsection}{Выбор классификатора}
+
+Результаты алгорита kNN
+
 
 В качестве метрик качества классификаторов были выбраны полнота (R), точность (P) и F-1 статистика. Метрика полноты представляет из себя отношение числа сообщений, корректно классифицированных как спам (True Positives) и общего числа спамовых сообщений (True Positives + False Negatives):
 
@@ -73,45 +143,6 @@ SVM & 86\% & 86\% & 86\%  \\
 \caption{Время вычисления признаков}
 \label{tab:comptime}
 \end{table}
-
-
-\begin{table}[H]
-\centering
-\resizebox{\textwidth}{!}{\begin{tabular}{|l|c|c|}
-\hline
-\textbf{К} & \textbf{Точность} & \textbf{Кросс Валидация} \\
-\hline
-k =  & 0.0057 & \\
-\hline
-k =  & 1.0448 & \\
-\hline
-k =  & 0.0057 & \\
-\hline
-k =  & 1.0448 & \\
-\hline
-k =  & 0.0057 & \\
-\hline
-k =  & 1.0448 & \\
-\hline
-k =  & 0.0057 & \\
-\hline
-k =  & 1.0448 & \\
-\hline
-k =  & 0.0057 & \\
-\hline
-k =  & 1.0448 & \\
-\hline
-k = & 0.0057 & \\
-\hline
-k = & 1.0448 & \\
-\hline
-\end{tabular}}
-
-\caption{Время вычисления признаков}
-\label{tab:comptime}
-\end{table}
-
-
 
 
 
