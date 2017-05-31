@@ -1,0 +1,121 @@
+%!TEX root = ../Diploma.tex
+
+
+\begin{section}{Проведенные эксперименты}
+
+\begin{subsection}{Выбор классификатора}
+
+В качестве метрик качества классификаторов были выбраны полнота (R), точность (P) и F-1 статистика. Метрика полноты представляет из себя отношение числа сообщений, корректно классифицированных как спам (True Positives) и общего числа спамовых сообщений (True Positives + False Negatives):
+
+\begin{equation}
+  R = \frac{True Positives}{True Positives + False Negatives}
+\end{equation}
+
+Точность - это отношение числа сообщений, корректно классифицированных как спам (True Positives) и общего числа  сообщений, классифицированных как спам (True Positives + False Positives):
+
+\begin{equation}
+  P = \frac{True Positives}{True Positives + False Positives}
+\end{equation}
+
+F-1 статистика может быть проинтерпретирована как гармоническое среднее между метриками точности и полноты:
+
+\begin{equation}
+  F1 = \frac{2 \times P \times R}{P + R}
+\end{equation}
+
+
+
+Для обучения из имеющегося набора данных случайным образом был использован
+
+
+
+
+
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Классификатор} & \textbf{Точность} & \textbf{Полнота} & \textbf{F-1}  \\
+\hline
+kNN & 86\% & 86\% & 86\% \\
+\hline
+Решающее дерево & 89\% & 89\% & 89\% \\
+\hline
+Наивный байесовский классификатор & 76\% & 76\% & 76\% \\
+\hline
+\textbf{Случайные леса} & \textbf{93\%} & \textbf{93\%} & \textbf{93\%} \\
+\hline
+SVM & 86\% & 86\% & 86\%  \\
+\hline
+\end{tabular}}
+
+\caption{Сравнение показателей классификатора}
+\label{tab:results}
+\end{table}
+
+
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|c|}
+\hline
+\textbf{Группа признаков} & \textbf{Время на вычисление (сек.) для 1000 твитов} \\
+\hline
+Пользовательские признаки & 0.0057 \\
+\hline
+Признаки контента & 1.0448 \\
+\hline
+\end{tabular}}
+
+\caption{Время вычисления признаков}
+\label{tab:comptime}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|c|c|}
+\hline
+\textbf{К} & \textbf{Точность} & \textbf{Кросс Валидация} \\
+\hline
+k =  & 0.0057 & \\
+\hline
+k =  & 1.0448 & \\
+\hline
+k =  & 0.0057 & \\
+\hline
+k =  & 1.0448 & \\
+\hline
+k =  & 0.0057 & \\
+\hline
+k =  & 1.0448 & \\
+\hline
+k =  & 0.0057 & \\
+\hline
+k =  & 1.0448 & \\
+\hline
+k =  & 0.0057 & \\
+\hline
+k =  & 1.0448 & \\
+\hline
+k = & 0.0057 & \\
+\hline
+k = & 1.0448 & \\
+\hline
+\end{tabular}}
+
+\caption{Время вычисления признаков}
+\label{tab:comptime}
+\end{table}
+
+
+
+
+
+\end{subsection}
+
+
+\end{section}
