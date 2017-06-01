@@ -9,49 +9,49 @@
 
   \begin{table}[H]
   \centering
-  {\begin{tabular}{|l|c|c|}
+  {\begin{tabular}{|l|l|c|c|}
   \hline
-  \textbf{Number of neighbors \textit{k}} & \textbf{Weights} & \textbf{Accuracy} \\
+  \textbf{Number of neighbors \textit{k}} & \textbf{Weights} & \textbf{Accuracy} & \textbf{Std} \\
   \hline
-  k = 1 & uniform  & 0.8549 \\
+  k = 1 & uniform  & 0.8549 & 0.00398 \\
   \hline
-  k = 1 & distance  & 0.8549 \\
+  k = 1 & distance  & 0.8549 & 0.00398 \\
   \hline
-  k = 3 & uniform  & 0.87634 \\
+  k = 3 & uniform  & 0.87634 & 0.00353 \\
   \hline
-  k = 3 &  distance & 0.87596  \\
+  k = 3 &  distance & 0.87596  & 0.00346 \\
   \hline
-  k = 5 & uniform  & 0.88281 \\
+  k = 5 & uniform  & 0.88281 & 0.00304 \\
   \hline
-  k = 5 & distance  & 0.88302 \\
+  k = 5 & distance  & 0.88302 & 0.00295 \\
   \hline
-  k = 7 & uniform  & 0.88481 \\
+  k = 7 & uniform  & 0.88481 & 0.00367 \\
   \hline
-  k = 7 &  distance & 0.88525  \\
+  k = 7 &  distance & 0.88525  & 0.00360 \\
   \hline
-  k = 9 & uniform  & 0.88546 \\
+  k = 9 & uniform  & 0.88546 & 0.00424 \\
   \hline
-  k = 9 & distance  & 0.88635 \\
+  k = 9 & distance  & 0.88635 & 0.00401 \\
   \hline
-  k = 11 & uniform  & 0.88560 \\
+  k = 11 & uniform  & 0.88560 & 0.00432 \\
   \hline
-  k = 11 &  distance & 0.88737  \\
+  k = 11 &  distance & 0.88737  & 0.00448 \\
   \hline
-  k = 13 & uniform  & 0.88618 \\
+  k = 13 & uniform  & 0.88618 &  0.00394 \\
   \hline
-  \textbf{k = 13} & \textbf{distance}  & \textbf{0.88844} \\
+  \textbf{k = 13} & \textbf{distance}  & \textbf{0.88844} & \textbf{0.00369} \\
   \hline
-  k = 15 & uniform  & 0.88612 \\
+  k = 15 & uniform  & 0.88612 & 0.00359 \\
   \hline
-  k = 15 &  distance & 0.88802  \\
+  k = 15 &  distance & 0.88802  & 0.00272 \\
   \hline
-  k = 17 & uniform  & 0.88551 \\
+  k = 17 & uniform  & 0.88551 & 0.00345 \\
   \hline
-  k = 17 & distance  & 0.88797 \\
+  k = 17 & distance  & 0.88797 & 0.00300 \\
   \hline
-  k = 19 & uniform  & 0.88481 \\
+  k = 19 & uniform  & 0.88481 & 0.00315 \\
   \hline
-  k = 19 &  distance & 0.88802  \\
+  k = 19 &  distance & 0.88802  & 0.00361 \\
   \hline
   \end{tabular}}
 
@@ -65,6 +65,130 @@
 
 
 \begin{subsubsection}{Наивный байесовский классификатор}
+Единственным параметром, по которому проходил поиск по сетке, это параметр fit\_prior, который принимает булевое значение. Суть этого параметра в использовании предыдущих вероятностей класса или не использовании.
+Наивный байесовский классификатор не показал высоких результатов:
+
+\begin{table}[H]
+\centering
+{\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Fit\_Prior} & \textbf{Accuracy} & \textbf{Std} \\
+\hline
+True & 0.75619  & 0.00392 \\
+\hline
+\textbf{False} & \textbf{0.75718}  & \textbf{0.8549} \\
+\hline
+\end{tabular}}
+
+\caption{Подбор по сетке Nb}
+\label{grid:nb}
+\end{table}
+
+
+
+\end{subsubsection}
+
+
+\begin{subsubsection}{Дерево решений}
+
+В деревьях решений
+
+
+\begin{table}[H]
+\centering
+{\begin{tabular}{|l|l|l|c|c|}
+\hline
+\textbf{Criterion} & \textbf{Max depth} & \textbf{Splitter} & \textbf{Accuracy} & \textbf{Std} \\
+\hline
+Gini & 1  & best & 0.84177 & 0.00516 \\
+\hline
+Gini & 1  & random &  0.54702 & 0.03000 \\
+\hline
+Gini & 2  & best & 0.84177 & 0.00516 \\
+\hline
+Gini &  2 & random  & 0.59500 & 0.02743 \\
+\hline
+Gini & 3  & best & 0.87258 & 0.00449 \\
+\hline
+Gini & 3  & random & 0.64052 & 0.07874 \\
+\hline
+Gini & None  & best & 0.88475 & 0.00386 \\
+\hline
+Gini &  None & random  & 0.87360 & 0.00496 \\
+\hline
+Entropy & 1  & best & 0.84182 & 0.00480 \\
+\hline
+Entropy & 1  & random & 0.55109 & 0.03190 \\
+\hline
+Entropy  & 2  & best & 0.84182 & 0.00480 \\
+\hline
+Entropy  &  2 & random  & 0.58652 & 0.03546 \\
+\hline
+Entropy  & 3  & best &  0.86879 & 0.00419 \\
+\hline
+Entropy  & 3  & random & 0.67764 & 0.06590 \\
+\hline
+Entropy & None  & best & 0.88884 & 0.00441 \\
+\hline
+Entropy &  None & random  & 0.87409 & 0.00369 \\
+\hline
+\end{tabular}}
+
+\caption{Подбор по сетке DT}
+\label{grid:dt}
+\end{table}
+
+
+\end{subsubsection}
+
+
+\begin{subsubsection}{Random forest}
+
+  \begin{table}[H]
+  \centering
+  {\begin{tabular}{|l|l|l|l|c|c|}
+  \hline
+  \textbf{Estimators} & \textbf{Criterion} & \textbf{Max Depth} & \textbf{Bootstrap} & \textbf{Accuracy} & \textbf{Std} \\
+  \hline
+  Gini & 1  & best & 0.84177 & 0.00516 \\
+  \hline
+  Gini & 1  & random &  0.54702 & 0.03000 \\
+  \hline
+  Gini & 2  & best & 0.84177 & 0.00516 \\
+  \hline
+  Gini &  2 & random  & 0.59500 & 0.02743 \\
+  \hline
+  Gini & 3  & best & 0.87258 & 0.00449 \\
+  \hline
+  Gini & 3  & random & 0.64052 & 0.07874 \\
+  \hline
+  Gini & None  & best & 0.88475 & 0.00386 \\
+  \hline
+  Gini &  None & random  & 0.87360 & 0.00496 \\
+  \hline
+  Entropy & 1  & best & 0.84182 & 0.00480 \\
+  \hline
+  Entropy & 1  & random & 0.55109 & 0.03190 \\
+  \hline
+  Entropy  & 2  & best & 0.84182 & 0.00480 \\
+  \hline
+  Entropy  &  2 & random  & 0.58652 & 0.03546 \\
+  \hline
+  Entropy  & 3  & best &  0.86879 & 0.00419 \\
+  \hline
+  Entropy  & 3  & random & 0.67764 & 0.06590 \\
+  \hline
+  Entropy & None  & best & 0.88884 & 0.00441 \\
+  \hline
+  Entropy &  None & random  & 0.87409 & 0.00369 \\
+  \hline
+  \end{tabular}}
+
+  \caption{Подбор по сетке DT}
+  \label{grid:dt}
+  \end{table}
+
+
 
 \end{subsubsection}
 
