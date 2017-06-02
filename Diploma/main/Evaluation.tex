@@ -95,6 +95,28 @@ True & 0.75619  & 0.00392 \\
 
 \begin{subsubsection}{SVM}
 
+Для алгоритма SVM оптимальной оказалась модель с сигмоидом в качестве ядра ((см. пункт \ref{svm}))
+  \begin{table}[H]
+  \centering
+  {\begin{tabular}{|l|c|c|}
+  \hline
+  \textbf{Kernel & \textbf{Accuracy} & \textbf{Std} \\
+  \hline
+  linear & 0.88560 & 0.00432 \\
+  \hline
+  poly & 0.88481 & 0.00401 \\
+  \hline
+  rbf & 0.8549 & 0.00394 \\
+  \hline
+  sigmoid & 0.88802 & 0.00398 \\
+  \hline
+  precomputed & 0.8549 & 0.00300 \\
+  \hline
+  \end{tabular}}
+
+  \caption{Подбор по сетке \textit{k}-NN}
+  \label{grid:svm}
+  \end{table}
 
 \end{subsubsection}
 
