@@ -1,2 +1,2 @@
-# AISOBOI - Algorithms and system processing large amounts of information
-Repository with tasks and solutions from my masters degree courses
+# AISOBOI - Algorithms and systems for big data processing
+Repository with tasks and solutions for my masters degree courses
